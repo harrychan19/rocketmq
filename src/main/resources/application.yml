@@ -1,0 +1,6 @@
+server:
+  port: 9920
+
+spring:
+  application:
+    name: rocketmq
