@@ -22,10 +22,9 @@ public class ConsumerService {
     @PostConstruct
     public void defaultMQPushConsumer() {
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("PushConsumer");
-        consumer.setNamesrvAddr("47.104.158.165:9876");
+        consumer.setNamesrvAddr("localhost:9876");
         try {
             consumer.subscribe("TopicTest", "push");
-
             // 如果是第一次启动，从队列头部开始消费
             // 如果不是第一次启动，从上次消费的位置继续消费
             consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);

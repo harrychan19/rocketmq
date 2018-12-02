@@ -21,8 +21,10 @@ public class ProducerService {
     @PostConstruct
     public void initProducer() {
         producer = new DefaultMQProducer("Producer");
-        producer.setNamesrvAddr("47.104.158.165:9876");
+        producer.setNamesrvAddr("localhost:9876");
         producer.setRetryTimesWhenSendFailed(3);
+        producer.setSendMessageWithVIPChannel(false);
+        producer.setSendMsgTimeout(10000);
         try {
             producer.start();
             System.out.println("[Producer 已启动]");
@@ -40,7 +42,6 @@ public class ProducerService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        assert result != null;
         return "{\"MsgId\":\"" + result.getMsgId() + "\"}";
     }
 
