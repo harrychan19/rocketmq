@@ -18,6 +18,7 @@ public class TestController {
 
     @RequestMapping("/push")
     public String pushMsg(String msg) {
-        return producerService.send("TopicTest", "push", msg);
+//        return producerService.send("TopicTest", "push", msg);
+        return "内存不够了起不来";
     }
 }
